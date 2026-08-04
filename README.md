@@ -2,9 +2,9 @@
 
 Collection of bug-bounty **hunt-\*** hunting skills for Hermes Agent (Mojtaba Doromli / mojidroom).
 
-Only the `hunt-*` skills are included here — no generic skills, no reference corpora.
+Includes `hunt-*` skills plus `narrow-recon` and `wide-recon`.
 
-## Included Skills (64)
+## Included Skills (66)
 
 - `hunt-api-misconfig`
 - `hunt-aspnet`
@@ -70,3 +70,5 @@ Only the `hunt-*` skills are included here — no generic skills, no reference c
 - `hunt-write-gap`
 - `hunt-xss`
 - `hunt-xxe`
+- `narrow-recon`
+- `wide-recon`
