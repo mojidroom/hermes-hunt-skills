@@ -314,3 +314,9 @@ Cross-ref `mdpsec-report-knowledge` for the full index.
 - Non-sensitive file read: **Medium**
 - File read exposing DB creds / API keys / private keys / cloud creds: **High**
 - RCE via filter-chain / RFI / log / session / phar / CVE: **Critical**
+## webhacklist 2024-2026 updates
+
+- **PHP filter chains: error-based oracle file read** — 2023 #4. Chain `php://filter` + string filters to read files via an error oracle even when the server never reflects output.
+- **wrapwrap: PHP filters to wrap a file with prefix/suffix** — 2023. Bypass a `<?php`-prefix check when raw file read is blocked.
+- **Disguises Zip Past Path Traversal** — 2025. Archive extraction with ambiguous ZIP paths (`../`, zip-slip, duplicate entries, UTF-16 names) to write/read outside the intended dir.
+- **Path traversal in signed URLs (AWS SDKs)** — 2026. Append `%2e%2e/` or `..` inside the signed URL path while the signature still validates. Present even in official SDKs.

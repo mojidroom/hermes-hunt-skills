@@ -880,3 +880,13 @@ Vulnerabilities that exist only during a specific time window:
 - Short-lived sessions that can be hijacked
 - OTP codes valid longer than intended
 
+## webhacklist 2024-2026 updates
+
+- **Smashing the state machine: true potential of web race conditions** — 2023 #1. Race multi-step state machines (email change, signup) beyond coupons. Foundational modern race framework (PortSwigger).
+- **DOM-based race condition in the browser** — 2023 (RyotaK). Client-side races.
+- **Beyond the 65,535-byte single-packet limit** — 2024. First-sequence-sync to expand the single-packet race window via HTTP/2.
+- **Eclipse on Next.js: conditioned exploitation of an intended race-condition** — 2025. Race triggered only under a known condition.
+- **Racing and Fuzzing HTTP/3 (QuicDraw)** — 2025. Race/desync over HTTP/3.
+- **RaceDB: detecting request races in DB-backed apps** — 2025. DB-transaction racer to auth bypass/limits.
+- **A Race to the Bottom: Database Transactions Undermining AppSec** — 2024. Race on DB transaction isolation.
+

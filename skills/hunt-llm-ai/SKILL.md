@@ -936,3 +936,17 @@ Map every point where untrusted content reaches the LLM's context window:
 - Need to test whether tool outputs can inject prompts back into the agent.
 - Target uses RAG (Retrieval Augmented Generation) with external data sources.
 
+
+## webhacklist 2024-2026 updates
+
+2026 AI-agent / agentic / MCP wave techniques.
+
+- LLM cache poisoning (vLLM/GPTCache) (2026, 'Cache Me, Catch You'): Poison the shared semantic or prefix cache so another tenant's prompt returns attacker-controlled output. TEST: submit a poisoned cached prefix/prompt, then have a victim tenant request a semantically-similar prompt and check if the served completion reflects injected data.
+- No-tools post-injection exploitation (2026, 'No Tools Required'): After a successful prompt injection, drive the agent's tool/code path to a real action without needing an explicit tool call trigger. TEST: after injecting, frame the instruction as normal conversation ("keep going", "finish the task") and check the agent still executes the attacker side-effect.
+- ChatMate sandbox escape (2026): Escape the AI assistant's sandbox to run a remote prompt outside its isolation boundary. TEST: feed the model an input designed to break out of the sandboxed runtime and confirm remote/external code executes.
+- Agentic browser same-origin-policy violations (2026, 'Agentic Browsers and the Same-Origin Policy'): Test whether the agent's embedded browser enforces SOP when fetching/rendering cross-origin content. TEST: point the agentic browser at a cross-origin page that embeds a private resource and check whether the agent can read it back.
+- CoreBreak (2026): Abuse the agent so it exfiltrates stored credentials from its environment. TEST: instruct the agent to retrieve secrets it has access to (env vars, keyrings, cached auth) and send them to an OOB/Collaborator listener.
+- CoT forgery / role confusion prompt injection (2026): Forge or confuse the chain-of-thought/role so the model acts under an attacker-imposed identity. TEST: inject a fabricated internal role/CoT block and verify the model obeys the attacker persona instead of the real one.
+- MCP server auth weakness enumeration (2026, 'Authentication Security in Real-World Remote MCP Servers'): Enumerate remote MCP servers for missing/weak authentication on tool endpoints. TEST: list reachable MCP tools without credentials; check for anonymous access, default tokens, and missing per-tool authz.
+- Supply-chain agent takeover via poisoned repo/issue (2026, 'Poisoning Claude Code', 'Your WAF Blocked Us'): Take over an agent by poisoning files it will ingest (repo docs, issues, PR text). TEST: plant malicious instructions in a repo/issue that an agent reads and confirm the agent follows them.
+- LGTM (2026): Bypass an LLM build/code-review gate when direct prompt injection on the reviewed code fails. TEST: inject the payload via a channel the gate reads but doesn't sanitize (comments, metadata, out-of-band context) to flip the gate's approval verdict.

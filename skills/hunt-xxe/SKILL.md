@@ -442,4 +442,11 @@ All 3 tests verify the skill is properly structured and ready for use.
 - **`hunt-rce`** — XXE → RCE is rare but real on PHP (`expect://`), Java (XSLT extensions with `<xsl:script>`/Xalan), and older XmlSpy/SAXON deployments. Chain primitive: XXE in a Java endpoint using a vulnerable XSLT processor → `<xsl:value-of select="rt:exec(rt:getRuntime(),'id')"/>` → RCE; or PHP XXE with `expect://id` stream wrapper enabled → direct RCE.
 - **`hunt-sharepoint`** — On-prem SharePoint/Exchange/IIS stacks have a long history of XXE in SOAP/CSOM/EWS endpoints. Chain primitive: anonymous XXE in `_vti_bin/*.asmx` or EWS SOAP → read `web.config` → recover `<machineKey>` → ViewState deserialization → RCE (the ToolShell-adjacent precondition).
 - **`security-arsenal`** — Reach for the XXE payload tree: standard SYSTEM file read, parameter-entity OOB DTD pattern (the `%` indirection that makes blind XXE work), `php://filter/convert.base64-encode/resource=` for binary-safe read, XInclude (`<xi:include href=...>`) when DOCTYPE is blocked, billion-laughs/quadratic-blowup for DoS, and the `jar://` / `netdoc://` Java-specific wrappers.
+
+## webhacklist 2024-2026 updates
+
+- **Impossible XXE in PHP** — 2025. PHP XXE that should be impossible (libxml entity limits, no external entities) achieved via a real bypass path — study the technique beyond the slogan.
+- **Make XXE Attacks Brilliant Again** — 2025. Resurrect XXE classes thought dead.
+- **SOAPwn: Pwning .NET via HTTP client proxies + WSDL** — 2025 #5. SSRF/XXE through SOAP client proxy/WSDL import (`<soap:address>` to internal, XSD import). Test: when target consumes a WSDL you point at an OOB DTD.
+- **Blind trust: PDF creation to XXE** — 2025. PDF libraries fetch external entities when rendering/creating PDFs.
 - **`triage-validation`** — Apply the Reproducibility + Pre-Severity Gates. An XXE that only triggers an OOB DNS callback with NO data exfil is Low/Medium (information disclosure of "this parser fetches entities"), not Critical. Critical needs proof of file read or internal HTTP — show the actual `/etc/passwd` content or the IMDS JSON response in the report.

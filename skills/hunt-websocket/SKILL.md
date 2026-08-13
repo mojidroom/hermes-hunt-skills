@@ -464,4 +464,10 @@ gRPC's failure modes look like successes to a naive `grep`. Apply these gates be
 - Internal service externally reachable (transcoder or open port) → **High**
 - Plaintext h2c leaking bearer metadata → **High**
 - Reflection enabled exposing non-public catalog → **Medium** (enabler)
+
+## webhacklist 2024-2026 updates
+
+- **Cross-Site WebSocket Hijacking Exploitation in 2025** — 2025. Modern CSWSH: no CORS check on `WebSocket`, session cookie carried automatically. Test: connect from an evil origin to `ws(s)://target`, see if handshake accepts + server pushes private data.
+- **Fuzzing WebSockets for server-side vulnerabilities** — 2025. Fuzz WS message frames for injection/confusion into backend desync.
+- **Hacking into gRPC-Web** — 2023. gRPC over WebSocket/browser — see `hunt-grpc`.
 - Proto/descriptor leak, no callable sensitive method → **Low**

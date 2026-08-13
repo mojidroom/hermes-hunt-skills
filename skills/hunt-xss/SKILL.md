@@ -585,3 +585,12 @@ javascript:alert(1) javascr%09ipt:\u0061lert(1)
 
 # XSS Testing Methodology
 
+## webhacklist 2024-2026 updates
+
+- **Blind SSTI turned stored XSS via error reflection** — 2025 #1. Reflection of error text is an XSS oracle; combine blind SSTI oracle output with a rendered sink.
+- **Cross-Site ETag Length Leak** — 2025 #6. Reflect attacker JSON in a cross-origin ETag; use cache length to infer secret bytes (XS-Leak). Test: get `/?cb=SECRET` reflected into ETag, measure response-size delta.
+- **XSS-Leak: Leaking Cross-Origin Redirects** — 2025 #8. Use `fetch` + redirect timing/location to leak whether a cross-origin URL redirected to a target.
+- **Unicode normalization → XSS** — 2025 #4 (`Lost in Translation`). Payload canonicalizes to dangerous chars after a filter: send NFC/NFD, overlong UTF-8, full-width, confusable. Test with WAF: `＜script＞` (fullwidth) executed after backend decode.
+- **Parser differential MIME → XSS** — 2026 (`Parse and Parse`). Submit a file whose MIME the validator accepts but the browser renders as HTML. Test: `Content-Type: text/plain` + MIME sniff → XSS.
+- **Vega toString gadget-chain XSS** — 2025 (CVE-2025-59840). JS `toString`/valueOf coercion in template/gadget sinks → script exec. Test: land attacker string into `.toString()` of anchor/href assignment.
+- **CSS exfiltration as XSS substitute** — 2025/2026 (Fontleak, Inline Style Exfil, CSS bomb). When you can inject `<style>` but not `<script>`, leak data via `@font-face` ligature width or chained CSS conditionals. See `hunt-novel-techniques`.

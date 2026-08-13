@@ -1076,3 +1076,10 @@ See `references/ctf-stacktrace-and-deserialization.md` for detailed payloads, st
 
 See `references/podbox-video-download-chain.md` for PodBox video API access-control testing (info disclosure without auth, version-gated /link endpoint, CDN without authentication).
 
+## webhacklist 2024-2026 updates
+
+- **Novel SSRF via HTTP Redirect Loops** — 2025 #3. Server follows attacker-controlled redirects cyclically to reach internal/metadata. Test: `Location:` header pointing at an internal URL, loop flowers.
+- **SSRF Cross-Protocol Redirect Bypass** — 2023. Redirect chain flips scheme (http→gopher/http) past a scheme allowlist.
+- **SNI proxy misconfig → SSRF** — 2022. Proxy routes by TLS SNI (not Host). Test: `curl --resolve target:443:IP` + SNI override.
+- **FFmpeg as SSRF/OOB gadget** — 2026 (`Your House Has an FFmpeg Problem`). Any upload feeding FFmpeg (video/thumb) can fetch attacker URLs. Test: crafted media with `http://` in metadata triggers outbound.
+- **APIM→AI Foundry credential-relay SSRF** — 2026 watchlist (CVE-2026-26118). Credential and destination resolve independently → user input reaches outbound request carrying a Managed Identity token with no destination validation.

@@ -513,3 +513,10 @@ echo "  6. If SP accepts → XSW confirmed"
 - Metadata endpoint accessible at `/saml2/idp/metadata.php` or `/FederationMetadata/2007-06/FederationMetadata.xml`.
 - After `exchange-owa-attack` discovers ADFS.
 
+## webhacklist 2024-2026 updates
+
+- **The Fragile Lock: Novel Bypasses for SAML Authentication** — 2025. Fresh SAML assertion-bypass classes beyond classic XSW.
+- **SAML roulette: the hacker always wins** — 2025. Randomization/state confusion in SAML to auth bypass.
+- **Hacking the Cloud with SAML** — 2022. Cloud SAML IdP/SP misconfig to tenant access.
+- **Ruby-SAML / GitLab Auth Bypass (CVE-2024-45409)** — 2024. Signature/assertion-validation flaw in Ruby-SAML.
+

