@@ -20,8 +20,29 @@ hermes-hunt-skills/
 │   ├── recon-narrow.md         # deep recon agent (JS, params, API)
 │   ├── <vuln>-hunter.md        # ONE dedicated hunter per hunt-* skill (62)
 │   └── verify-skeptic.md       # independent finding verifier (red-team skeptic)
-└── data/                       # research archive (webhacklist catalog)
+└── data/                       # research archive (webhacklist catalog, disclosure-index KB)
 ```
+
+## 📚 Global knowledge base (cross-class references)
+
+Every `hunt-*` skill ships a `references/` corpus. Two new curated corpora were
+added from the open disclosure archives and should be consulted by the matching
+hunter and by `verify-skeptic`:
+
+- `references/disclosure-index-{class}.md` — top 30 real reports per bug class
+  (title, researcher, severity, bounty, date, source URL) extracted from the
+  11,304-record archive (`bug-bounty-disclosures.vercel.app`, HackerOne /
+  Bugcrowd / Code4rena / Immunefi / Intigriti / YesWeHack). Ground-truth
+  examples for each class.
+- `references/google-bug-hunters-recent.md` — recent (2025–2026) Google VRP
+  disclosures: AI/LLM-agent surfaces, cross-tenant cloud issues, Zip-Slip→RCE,
+  TLS handshake desync, cache poisoning via space forwarding, unbounded-body
+  DoS. Rich source of *current* attacker priorities.
+- `security/hunting-techniques-db/references/disclosure-index-knowledge-base.md`
+  — aggregate KB: class distribution, top bounties, notable 2024–2026 findings.
+
+Hunters should pull the class-specific reference first to seed real attack
+shapes and payout context before writing bespoke payloads.
 
 ## How the swarm runs
 
